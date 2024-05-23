@@ -5,14 +5,17 @@ Integrantes: Daniel Felipe Cantor Santana, Giovanni Obregon, Thomas Hernandez Oc
 Para realizar la conexión del robot EV3 con ROS, se empleó el protocolo MQTT,para esto se realizaron los siguientes pasos:
 
 ## Booteo tarjetas SD
-Para no reemplazar, o incluso dañar, el software del robot EV3, se usó una versión de linux compatible con dicho robot mediante el Booteo de una tarjeta SD. Se siguieron los pasos de la página [EV3Dev](https://www.ev3dev.org). Cabe aclarar que al instalar el doftware en la SD, si se requiere volver al sistema operativo predeterminado, basta con extraer la tarjeta SD del robot. 
+Para no reemplazar, o incluso dañar, el software del robot EV3, se usó una versión de linux compatible con dicho robot mediante el Booteo de una tarjeta SD. Se siguieron los pasos de la página [EV3Dev](https://www.ev3dev.org). Cabe aclarar que al instalar el software en la SD, si se requiere volver al sistema operativo predeterminado, basta con extraer la tarjeta SD del robot.
 
 ## Prueba de funcionamiento via Wifi
-El primer paso para la conexión del robot es generar y verificar una conexión estable entre el roboot y el PC, para esto se compró una antena wifi compatible con el EV3. Nuevamente siguiendo los pasos de.....
+El primer paso para la conexión del robot es generar y verificar una conexión estable entre el robot y el PC, para esto se compró una antena wifi compatible con el EV3. Nuevamente siguiendo los pasos  disponibles de la página [EV3Dev](https://www.ev3dev.org). La conexión via Wifi pueden verse en la siguiente imagen:
+
 
 ![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Prueba_Wifi.jpg)
 
 Con la conexión establecida, se abrió la consola del robot y se envió un primero código llamado "helloWorld.py" para verificar que la conexión fue existosa.
+
+
 
 
 ## Creación del servicio MQTT
