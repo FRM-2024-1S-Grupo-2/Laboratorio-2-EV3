@@ -10,7 +10,7 @@ Para no reemplazar, o incluso dañar, el software del robot EV3, se usó una ver
 ## Prueba de funcionamiento via Wifi
 El primer paso para la conexión del robot es generar y verificar una conexión estable entre el roboot y el PC, para esto se compró una antena wifi compatible con el EV3. Nuevamente siguiendo los pasos de.....
 
-![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Prueba_Wifi.png)
+![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Prueba_Wifi.jpg)
 
 Con la conexión establecida, se abrió la consola del robot y se envió un primero código llamado "helloWorld.py" para verificar que la conexión fue existosa.
 
