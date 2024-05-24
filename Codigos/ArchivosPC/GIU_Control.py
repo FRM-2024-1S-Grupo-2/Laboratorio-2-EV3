@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=ZKR8pdr7CnI
 """
 
 #Impotación de las librerias necesarias
-import tkinter
+import tkinter as tk
 from tkinter import ttk
 import rospy
 import math
@@ -44,37 +44,14 @@ class MyDelegate(object):
         self.cmd_vel_msg = Twist()
         self.cmd_vel_msg.linear.x = 0
         self.cmd_vel_msg.linear.y = 0
-    """
-    def setlabel(self,label):
-        #Función para declaración de label que se usara para datos del giro sensor
-        self.label = label
-    """
+
+
     def print_message(self, message):
         #Función para procesamiento de mensaje recibido de tipo "print_message"
 
         #Impression del mesaje recibido
         print("Message received:", message)
-    """
-    def Angle(self, angle):
-        #Función para procesamiento de mensaje recibido de tipo "Angle"
-
-        #Se pone el angulo en convencion anti-horaria
-        angle = angle*-1
-        #Actualización del label de presentación e impresion del angulo recibido
-        self.label.config(text=str(angle))
-        print("Angle received:", angle)
-        
-        #Declaración de velocidad angular del mensaje para el turtlesim 
-        self.cmd_vel_msg.angular.z = 0
-
-        #Verificación orientación y actualizar el valor según el valor recibido de angulo 
-        if self.Orientation != angle:
-            self.cmd_vel_msg.angular.z = ((angle-self.Orientation)*(math.pi/180))
-            self.Orientation = angle
-
-        # Publicación del mensaje Twist para el control de la tortuga
-        turtle_vel_pub.publish(self.cmd_vel_msg)
-    """
+ 
 
 #Dirección IP del broker MQTT usado por defecto
 mqtt_broker_ip_address = "3e4254d24aca4a2185849d5b0a0487b0.s1.eu.hivemq.cloud"
@@ -285,48 +262,73 @@ class MqttClient(object):
 
 #Función de creación de GIU
 def GIU():
-    #Creación de ventana principal del GIU y titulo de este
-    root = tkinter.Tk()
-    root.title("Contol ev3 with MQTT messages")
-
-    #Creación de frame y grid para grilla de posicion de elementos
+    root = tk.Tk()
+    root.title("Control EV3 with MQTT messages")
+    root.geometry('600x300')
+    
+    style = ttk.Style()
+    style.theme_use('clam')
+    style.configure('TButton', font=('Helvetica', 12), padding=10, background='#4caf50', foreground='white')
+    style.map('TButton', background=[('active', '#43a047')])
+    style.configure('TLabel', font=('Helvetica', 12))
+    style.configure('TEntry', font=('Helvetica', 12))
+    
     main_frame = ttk.Frame(root, padding=20)
-    main_frame.grid()
+    main_frame.grid(sticky=(tk.W, tk.E, tk.N, tk.S))
+    
+    # Cuadro de texto y etiqueta para la velocidad del motor izquierdo
+    ttk.Label(main_frame, text="Left Speed").grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
+    left_speed_entry = ttk.Entry(main_frame, width=8)
+    left_speed_entry.insert(0, "100")
+    left_speed_entry.grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
+    
+    # Cuadro de texto y etiqueta para la velocidad del motor derecho
+    ttk.Label(main_frame, text="Right Speed").grid(row=2, column=0, padx=5, pady=5, sticky=tk.W)
+    right_speed_entry = ttk.Entry(main_frame, width=8)
+    right_speed_entry.insert(0, "100")
+    right_speed_entry.grid(row=3, column=0, padx=5, pady=5, sticky=tk.W)
 
-    '''Creación de label para presnetar el valor de ángulo recibido y
-       declaración en el objeto my_delagate del label que recibe dicho mensaje'''
-    angle_label = ttk.Label(main_frame, text="Angle")
-    angle_label.grid(row=0, column=0)
-    angle_value_label = ttk.Label(main_frame, text="0")
-    angle_value_label.grid(row=1, column=0)
-    '''my_delegate.setlabel(angle_value_label)'''
+    # Espaciador entre los cuadros de velocidad y los otros botones
+    ttk.Separator(main_frame, orient='vertical').grid(row=0, column=1, rowspan=4, pady=10, padx=10, sticky='ns')
 
-    '''Creación del boton y tecla para solicitar el ángulo'''
-    angle_button = ttk.Button(main_frame, text="Update")
-    angle_button.grid(row=2, column=0)
-    angle_button['command'] = lambda: send_message_special(mqtt_client, "Angle", "angle button")
-    root.bind('<a>', lambda event: send_message_special(mqtt_client, "Angle", "angle key"))
-
-    """Creación del boton y tecla para hacer que el robot pare"""
+    # Botones de dirección
+    forward_button = ttk.Button(main_frame, text="Forward")
+    forward_button.grid(row=0, column=3, padx=5, pady=5)
+    forward_button['command'] = lambda: send_message_movtank(mqtt_client, int(left_speed_entry.get()), int(right_speed_entry.get()), "Forward button")
+    root.bind('<Up>', lambda event: send_message_movtank(mqtt_client, int(left_speed_entry.get()), int(right_speed_entry.get()), "Forward key"))
+    
+    left_button = ttk.Button(main_frame, text="Left")
+    left_button.grid(row=1, column=2, padx=5, pady=5)
+    left_button['command'] = lambda: send_message_movtank(mqtt_client, (-1/2)*int(left_speed_entry.get()), (1/2)*int(right_speed_entry.get()), "Left button")
+    root.bind('<Left>', lambda event: send_message_movtank(mqtt_client, (-1/2)*int(left_speed_entry.get()), (1/2)*int(right_speed_entry.get()), "Left key"))
+    
     stop_button = ttk.Button(main_frame, text="Stop")
-    stop_button.grid(row=2, column=1)
+    stop_button.grid(row=1, column=3, padx=5, pady=5)
     stop_button['command'] = lambda: send_message_special(mqtt_client, "Stop", "Stop button")
     root.bind('<space>', lambda event: send_message_special(mqtt_client, "Stop", "Stop key"))
-
-    """Creación del boton y tecla para hacer que el robot deje el programa"""
-    q_button = ttk.Button(main_frame, text="Quit")
-    q_button.grid(row=3, column=0)
-    q_button['command'] = lambda: send_message_special(mqtt_client, "Quit", "Quit button")
+    
+    right_button = ttk.Button(main_frame, text="Right")
+    right_button.grid(row=1, column=4, padx=5, pady=5)
+    right_button['command'] = lambda: send_message_movtank(mqtt_client, (1/2)*int(left_speed_entry.get()), (-1/2)*int(right_speed_entry.get()), "Right button")
+    root.bind('<Right>', lambda event: send_message_movtank(mqtt_client, (1/2)*int(left_speed_entry.get()), (-1/2)*int(right_speed_entry.get()), "Right key"))
+    
+    back_button = ttk.Button(main_frame, text="Back")
+    back_button.grid(row=2, column=3, padx=5, pady=5)
+    back_button['command'] = lambda: send_message_movtank(mqtt_client, (-1)*int(left_speed_entry.get()), (-1)*int(right_speed_entry.get()), "Back button")
+    root.bind('<Down>', lambda event: send_message_movtank(mqtt_client, (-1)*int(left_speed_entry.get()), (-1)*int(right_speed_entry.get()), "Back key"))
+    
+    quit_button = ttk.Button(main_frame, text="Quit MQTT")
+    quit_button.grid(row=3, column=2, padx=5, pady=5)
+    quit_button['command'] = lambda: send_message_special(mqtt_client, "Quit", "Quit button")
     root.bind('<q>', lambda event: send_message_special(mqtt_client, "Quit", "Quit key"))
-
-    """Creación del boton y tecla para salir de la GIU"""
-    e_button = ttk.Button(main_frame, text="Exit")
-    e_button.grid(row=3, column=1)
-    e_button['command'] = lambda: exit()
+    
+    exit_button = ttk.Button(main_frame, text="Exit")
+    exit_button.grid(row=3, column=4, padx=5, pady=5)
+    exit_button['command'] = lambda: exit()
     root.bind('<e>', lambda event: exit())
 
-    """Ciclo infinito de ejecución de la GIU"""
     root.mainloop()
+
 
     
 

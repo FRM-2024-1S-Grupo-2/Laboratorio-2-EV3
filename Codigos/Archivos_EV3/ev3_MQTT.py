@@ -47,16 +47,6 @@ class MyDelegate(object):
         #Función para manejar el robot en la parte de tracción
         self.robot.drive(left_speed, right_speed)
 
-    """
-    def arm_down(self):
-        #Función para bajar el brazo
-        self.robot.arm_down()
-
-    def arm_up(self):
-        #Función para subir el brao
-        self.robot.arm_up()
-
-    """
     def Stop(self):
         #Función para detener el robot
         self.robot.Stop()
@@ -65,25 +55,7 @@ class MyDelegate(object):
         #Función para salir de la rutina
         self.robot.Quit()
         sys.exit()
-    """
-    
-    def Angle(self):
-        #Función para enviar el valor de engulo actaul del giro sensor
 
-        #Se pide el valor del angulo
-        angle = self.robot.orientation()
-
-        #Se crea el mensaje a enviar con type "Angle" y parametro [angle]
-        self.msgtype = "Angle"
-        self.msglist = [angle]
-        self.mqtt_client.send_message(self.msgtype, self.msglist)
-
-        Impresión de acciónn realizada, topico en donde se publica
-        el mensaje y el mensaje enviado
-        print(self.msgtype, end="\t")
-        print(self.mqtt_client.publish_topic_name, end=" ")
-        print(self.msglist)
-    """
     def loop_forever(self):
         #Función de funcionamiento hasta que se oprime el boton backspace del robot
         button = Button()

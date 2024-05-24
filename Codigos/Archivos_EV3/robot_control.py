@@ -41,20 +41,7 @@ class DifferentialDrive(object):
         
         
         #Se inicializan los motores y el giroscopio
-        # self.motor_a = motor.MediumMotor('outA')
         self.tank = MoveTank(OUTPUT_B, OUTPUT_C)
-        # self.tank.gyro = GyroSensor()
-        # self.gyro = GyroSensor()
-
-        # Calibrar el giroscopio
-        # self.tank.gyro.calibrate()
-        print("Gyrosensor calibrating ... ")
-
-        # Esperar a que el giroscopio se calibre completamente
-        # while self.tank.gyro.calibrate():
-        #     time.sleep(0.1)
-        # print("GyroSensor is calibrated")
-
         # Definir el tipo de llanta usado
         self.llanta = EV3EducationSetTire()
 
@@ -83,34 +70,21 @@ class DifferentialDrive(object):
 
             print("Error range of speed is -100 to 100")
 
-    '''def arm_down(self):
-        #Funcion para bajar el brazo
-        self.motor_a.run_to_abs_pos(position_sp=0, speed_sp=self.speed, stop_action="hold")
 
-    def arm_up(self):
-        #Función para subir el brazo
-        self.motor_a.run_to_abs_pos(position_sp=140, speed_sp=self.speed, stop_action="hold")
-'''
     def Stop(self):
         #Función para parar cualquier movimiento
         self.tank.stop()
-        self.motor_a.stop()
 
     def Quit(self):
         #Función para salir de la rutina parando todos los movimientos
         self.tank.stop()
-        self.motor_a.stop()
         print("Quit to the routing")
         self.running = False
         Leds().set_color("LEFT", "BLACK")
         Leds().set_color("RIGHT", "BLACK")
         sys.exit()
         broke
-    '''
-    def orientation(self):
-        #Función para dar la orientación dada por el giro sensor
-        return self.gyro.angle
-    '''
+
     def loop_forever(self):
         #Función para crear bucle de funcionamientmiento en caso que se use el robot como delegado
         self.running = True
