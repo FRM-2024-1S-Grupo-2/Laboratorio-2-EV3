@@ -34,3 +34,9 @@ Por otro lado se creó un paquete en ROS para almacenar los archivos que se util
 ## Pruebas de funcionamiento
 
 ![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Ejecucion_en_ROS.png)
+
+# Video de Demostración
+
+[![Ver en YouTube](https://img.youtube.com/vi/jtdHT5IY994/maxresdefault.jpg)](https://www.youtube.com/watch?v=jtdHT5IY994)
+
+
