@@ -13,12 +13,17 @@ El primer paso para la conexión del robot es generar y verificar una conexión 
 
 ![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Prueba_Wifi.jpg)
 
-Con la conexión establecida, se abrió la consola del robot y se envió un primero código llamado "helloWorld.py" para verificar que la conexión fue existosa.
 
+Con la conexión establecida, se abrió la consola del robot y se envió un primero código llamado "helloWorld.py" para verificar que la conexión fue existosa. Como puede verse en los siguientes videos:
 
+[![Ver en YouTube](https://img.youtube.com/vi/cxmfSaQ0z-0/maxresdefault.jpg)](https://www.youtube.com/watch?v=cxmfSaQ0z-0)
+
+[![Ver en YouTube](https://img.youtube.com/vi/uahnYYg7ls/maxresdefault.jpg)](https://www.youtube.com/watch?v=uahnYYg7ls)
 
 
 ## Creación del servicio MQTT
+Ahora, antes de 
+
 
 ![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Servicio_MQTT.png)
 
@@ -35,7 +40,7 @@ Por otro lado se creó un paquete en ROS para almacenar los archivos que se util
 
 ![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Ejecucion_en_ROS.png)
 
-# Video de Demostración
+### Video de Demostración
 
 [![Ver en YouTube](https://img.youtube.com/vi/jtdHT5IY994/maxresdefault.jpg)](https://www.youtube.com/watch?v=jtdHT5IY994)
 
