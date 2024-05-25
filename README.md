@@ -23,6 +23,7 @@ mkdir python
 cd python/
 mkdir Mov
 cd Mov
+```
 
 
 Como puede verse en los siguientes videos:
