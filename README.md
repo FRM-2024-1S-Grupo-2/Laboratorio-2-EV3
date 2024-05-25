@@ -16,7 +16,7 @@ El primer paso para la conexión del robot es generar y verificar una conexión 
 
 Con la conexión establecida, se abrió la consola del robot y se envió un primero código llamado "helloWorld.py" para verificar que la conexión fue existosa, para eso se creó la siguiente ruta de archivo en el PC:
 
-'''cd ~
+```cd ~
 mkdir pruebas
 cd pruebas/
 mkdir python
