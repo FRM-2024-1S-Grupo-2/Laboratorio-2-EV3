@@ -14,7 +14,18 @@ El primer paso para la conexión del robot es generar y verificar una conexión 
 ![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Prueba_Wifi.jpg)
 
 
-Con la conexión establecida, se abrió la consola del robot y se envió un primero código llamado "helloWorld.py" para verificar que la conexión fue existosa. Como puede verse en los siguientes videos:
+Con la conexión establecida, se abrió la consola del robot y se envió un primero código llamado "helloWorld.py" para verificar que la conexión fue existosa, para eso se creó la siguiente ruta de archivo en el PC:
+
+'''cd ~
+mkdir pruebas
+cd pruebas/
+mkdir python
+cd python/
+mkdir Mov
+cd Mov
+
+
+Como puede verse en los siguientes videos:
 
 [![Ver en YouTube](https://img.youtube.com/vi/cxmfSaQ0z-0/maxresdefault.jpg)](https://www.youtube.com/watch?v=cxmfSaQ0z-0)
 
@@ -22,16 +33,20 @@ Con la conexión establecida, se abrió la consola del robot y se envió un prim
 
 
 ## Creación del servicio MQTT
-Ahora, antes de 
 
-
+La conexión que se busca hacer es implentar un protocolo de comunicación MQTT, por lo tano creamos el servicio:
 ![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Servicio_MQTT.png)
 
+De ahi, se toman el "URL Cluster" y el puerto ("PORT") que se usarán en los archivos [ev3_MQTT](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Codigos/Archivos_EV3/ev3_MQTT.py) y [GUI](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Codigos/ArchivosPC/GIU_Control.py).
+
+Por último, creamos un suscriptor para activar el servicio,  en este caso tanto su nombre como su contraseña es "LegoEv302"
 ![imagen](https://github.com/FRM-2024-1S-Grupo-2/Laboratorio-2-EV3/blob/main/Imagenes/Suscriptor_MQTT.png)
 
 ## Creación paquete de ROS
-Por otro lado se creó un paquete en ROS para almacenar los archivos que se utilizarán
+- Estableciendo la conexión via wifi del PC con el EV3, debe actualizarse el apt, justo como se indica en los pasos de 
+la pagina [EV3Dev](https://www.ev3dev.org), especificamente, el paso 6.1.
 
+- Una vez 
 
 
 ## Solución de fallos
