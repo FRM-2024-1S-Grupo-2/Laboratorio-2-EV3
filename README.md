@@ -39,7 +39,7 @@ Las pruebas de funcionamiento se ven en los siguientes videos:
 
 [![Ver en YouTube](https://img.youtube.com/vi/cxmfSaQ0z-0/maxresdefault.jpg)](https://www.youtube.com/watch?v=cxmfSaQ0z-0)
 
-[![Ver en YouTube](https://img.youtube.com/vi/uahnYYg7ls/maxresdefault.jpg)](https://www.youtube.com/watch?v=uahnYYg7ls)
+[![Ver en YouTube](https://img.youtube.com/vi/-uahnYYg7ls/maxresdefault.jpg)](https://www.youtube.com/watch?v=-uahnYYg7ls)
 
 
 ## Creación del servicio MQTT
